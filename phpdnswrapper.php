@@ -107,8 +107,8 @@ class DNS{
 					break;
 				}
 			}
-			if(exec("bind_reload", $output, $retval)){
-				if($retval != 1 && preg_match('/OK/', $output)) {
+			if(exec("bind9reload", $output, $retval)){
+				if($retval != 1 && preg_match('/running/', file_get_contents("/tmp/bind9status"))) {
 					$this->result["success"] = true;
 				}else{
 					$this->result["success"] = false;
