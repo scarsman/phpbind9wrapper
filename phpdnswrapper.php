@@ -82,7 +82,7 @@ class DNS{
 			
 			//since we can't touch the bind daemon using php shell directly,  wrap it in C code to manipulate the root uid
 			
-			if(exec("named-checkconf", $output, $retval)){
+			if(exec("namedcheckconf", $output, $retval)){
 				
 				if($retval == 1 && !empty($output)) {
 					$this->result["success"] = false;
@@ -90,7 +90,7 @@ class DNS{
 					break;
 				}	
 			}
-			if(exec("named-checkzone $domain $zone_file_entry", $output, $retval)){
+			if(exec("namedcheckzone $domain $zone_file_entry", $output, $retval)){
 				
 				$flag = false;
 				
